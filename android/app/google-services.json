@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1020808868248",
+    "project_id": "peliculasapp-bb2a2",
+    "storage_bucket": "peliculasapp-bb2a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020808868248:android:52818b143e3c3879c3bbed",
+        "android_client_info": {
+          "package_name": "com.example.peliculas_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020808868248-qg8cb4pc16p0pkm0q39vamvrbntt8s1s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.peliculas_app",
+            "certificate_hash": "42cfdcd6e1cf3f6e9be94ff7e68fab9521604cd7"
+          }
+        },
+        {
+          "client_id": "1020808868248-qpa1gk0mc371c1coj2fare1usvocanbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgZki-_ot6kMJoFGYlpFQWEiMfLzaDKnk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020808868248-qpa1gk0mc371c1coj2fare1usvocanbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

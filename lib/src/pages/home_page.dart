@@ -1,9 +1,13 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/providers/peliculas_provider.dart';
 import 'package:peliculas_app/src/search/search_delegate.dart';
 
 import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
 import 'package:peliculas_app/src/widgets/movie_horizontal.dart';
+import 'package:peliculas_app/src/utils/firebaseController.dart'
+    as firebaseController;
 
 class HomePage extends StatelessWidget {
   final peliculasProvider = new PeliculasProvider();
@@ -13,17 +17,36 @@ class HomePage extends StatelessWidget {
     peliculasProvider.getPopulares();
     return Scaffold(
         appBar: AppBar(
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
           centerTitle: false,
+          automaticallyImplyLeading: false,
           title: Text('Películas en cines'),
           backgroundColor: Colors.indigoAccent,
           actions: [
             IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () {
-                  showSearch(context: context, delegate: DataSerach());
+                  showSearch(
+                    context: context, delegate: DataSerach(),
+                    //query: 'Hola'
+                  );
                 })
           ],
         ),
+        drawer: _retornarDrawer(context),
         body: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -72,6 +95,29 @@ class HomePage extends StatelessWidget {
               }
             },
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _retornarDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          DrawerHeader(
+            child: Text('Opciones',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+          ),
+          ListTile(
+            title: Text('Salir'),
+            onTap: () {
+              firebaseController.signOut();
+              Navigator.pushNamed(context, 'login');
+            },
+          ),
         ],
       ),
     );
